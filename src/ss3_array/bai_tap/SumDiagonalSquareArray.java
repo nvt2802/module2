@@ -16,13 +16,11 @@ public class SumDiagonalSquareArray {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.println("nhap phan tu co toa do" + i + "," + j);
                 matrix[i][j] = scanner.nextInt();
-                if (i == j) {
-                    sumDiagonal1 += matrix[i][j];
-                }
-                if (i + j == (matrix.length - 1)) {
-                    sumDiagonal2 += matrix[i][j];
-                }
             }
+        }
+        for (int i = 0; i < lengthArr; i++) {
+            sumDiagonal1 += matrix[i][i];
+            sumDiagonal2 += matrix[i][lengthArr-1-i];
         }
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
