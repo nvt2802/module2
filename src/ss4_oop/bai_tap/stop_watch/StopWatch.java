@@ -15,20 +15,18 @@ public class StopWatch {
         this.endTime = new Date();
     }
 
-    public long start() {
+    public void start() {
         this.miliSecondsStart = System.currentTimeMillis();
         this.startTime = new Date(miliSecondsStart);
-        return this.miliSecondsStart;
     }
 
-    public long stop() {
+    public void stop() {
         this.miliSecondsEnd = System.currentTimeMillis();
         this.endTime = new Date(miliSecondsEnd);
-        return this.miliSecondsEnd;
     }
 
     public long getElapsedTime() {
-        return this.miliSecondsEnd-this.miliSecondsStart;
+        return this.miliSecondsEnd - this.miliSecondsStart;
     }
 
     @Override
