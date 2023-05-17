@@ -5,7 +5,7 @@ public class Test {
         Shape[] shape = new Shape[3];
         Circle circle = new Circle(3);
         Square square = new Square(9);
-        Rectangle rectangle = new Rectangle(5,8);
+        Rectangle rectangle = new Rectangle(5, 8);
         shape[0] = circle;
         shape[1] = square;
         shape[2] = rectangle;

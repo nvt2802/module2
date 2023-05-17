@@ -1,6 +1,6 @@
 package ss7.bai_tap.resizeable;
 
-public class Rectangle extends Shape{
+public class Rectangle extends Shape {
     private double width = 1.0;
     private double length = 1.0;
 
@@ -38,9 +38,9 @@ public class Rectangle extends Shape{
         return width * this.length;
     }
 
-   public void resize(double percent){
-        setLength(this.length+this.length*percent/100);
-   }
+    public void resize(double percent) {
+        setLength(this.length + this.length * percent / 100);
+    }
 
     public double getPerimeter() {
         return 2 * (width + this.length);
@@ -52,7 +52,7 @@ public class Rectangle extends Shape{
                 + getWidth()
                 + " and length="
                 + getLength()
-                +", area="+getArea()
+                + ", area=" + getArea()
                 + ", which is a subclass of "
                 + super.toString();
     }

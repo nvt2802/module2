@@ -1,6 +1,6 @@
 package ss7.bai_tap.colorable;
 
-public abstract class Shape implements Colorable{
+public abstract class Shape implements Colorable {
     private String color = "green";
     private boolean filled = true;
 
@@ -40,5 +40,6 @@ public abstract class Shape implements Colorable{
     public void howToColor() {
 
     }
+
     public abstract double getArea();
 }

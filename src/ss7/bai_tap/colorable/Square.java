@@ -9,7 +9,7 @@ public class Square extends Rectangle {
     }
 
     public Square(double side) {
-        super(side,side);
+        super(side, side);
     }
 
     public Square(double side, String color, boolean filled) {
@@ -26,7 +26,7 @@ public class Square extends Rectangle {
     }
 
     public double getArea() {
-        return this.getLength()*this.getWidth();
+        return this.getLength() * this.getWidth();
     }
 
     public double getPrimeter() {
