@@ -40,6 +40,7 @@ public class Rectangle extends Shape {
 
     public void resize(double percent) {
         setLength(this.length + this.length * percent / 100);
+        setWidth(this.width + this.width * percent / 100);
     }
 
     public double getPerimeter() {
