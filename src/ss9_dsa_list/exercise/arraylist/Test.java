@@ -1,4 +1,4 @@
-package ss9_list.exercise.arraylist;
+package ss9_dsa_list.exercise.arraylist;
 
 public class Test {
     public static void main(String[] args) {
