@@ -26,7 +26,9 @@ public class MyList<E> {
      *                tang size +1
      */
     public void add(int index, E element) {
-        ensureCapacity(this.element.length);
+        if (this.size == this.element.length) {
+            ensureCapacity(this.element.length * 2);
+        }
         if (size > this.element.length) {
             throw new IndexOutOfBoundsException("size: " + size + ", length element:" + this.element.length);
         }
@@ -97,20 +99,19 @@ public class MyList<E> {
      * them phan tu e vao cuoi mang
      */
     public boolean add(E e) {
-        ensureCapacity(this.element.length);
+        if (this.size == this.element.length) {
+            ensureCapacity(this.element.length * 2);
+        }
         element[size++] = e;
         return true;
     }
 
     /**
      * @param minCapacity capacity nho nhat
-     *                    tang kich thuoc cua array list len gap doi neu size = capacity
+     *                    tang kich thuoc cua array list len +minCapacity neu size = capacity
      */
     public void ensureCapacity(int minCapacity) {
-        if (this.size == minCapacity) {
-            int newSize = element.length * 2;
-            element = Arrays.copyOf(element, newSize);
-        }
+        element = Arrays.copyOf(element, minCapacity);
     }
 
     /**
