@@ -4,26 +4,26 @@ import ss9_dsa_list.extra_exercises.model.Person;
 import ss9_dsa_list.extra_exercises.model.Student;
 import ss9_dsa_list.extra_exercises.reposiroy.IPersonRepository;
 import ss9_dsa_list.extra_exercises.reposiroy.impl.StudenRepository;
-import ss9_dsa_list.extra_exercises.service.IStudentService;
+import ss9_dsa_list.extra_exercises.service.IPersonService;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class StudentService implements IStudentService {
+public class StudentService implements IPersonService {
 
     private static Scanner scanner = new Scanner(System.in);
     private static IPersonRepository studentRepository = new StudenRepository();
 
     @Override
-    public void displayStudent() {
-        List<Person> student = studentRepository.getAllStudent();
+    public void display() {
+        List<Person> student = studentRepository.getAll();
         for (Person s : student) {
             System.out.println(s);
         }
     }
 
     @Override
-    public void addStudent() {
+    public void add() {
         System.out.println("Nhap ma hoc vien:");
         String ID = scanner.nextLine();
         System.out.println("Nhap ten hoc vien:");
@@ -44,7 +44,7 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public void deleteStudent() {
+    public void delete() {
         System.out.println("Nhap ma hoc vien ban muon xoa:");
         String id = scanner.nextLine();
         Person student = studentRepository.getByID(id);

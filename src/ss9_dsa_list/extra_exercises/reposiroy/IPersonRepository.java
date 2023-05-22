@@ -5,8 +5,7 @@ import ss9_dsa_list.extra_exercises.model.Person;
 import java.util.List;
 
 public interface IPersonRepository {
-    List<Person> getAllStudent();
-    List<Person> getAllSLecturers();
+    List<Person> getAll();
 
     void add(Person person);
 

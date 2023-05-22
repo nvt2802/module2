@@ -10,7 +10,7 @@ import java.util.List;
 public class StudenRepository implements IPersonRepository {
     //    public Student(String ID, String name, String dayOfBirth, boolean gender, String classes, short scores)
     private static List<Person> students = new ArrayList<>();
-    private static List<Person> lecturers = new ArrayList<>();
+
 
     static {
         students.add(new Student("HV-001", "Nguyen Van A", "22/12/2002", "Nam", "C0323G1", 100));
@@ -19,13 +19,8 @@ public class StudenRepository implements IPersonRepository {
     }
 
     @Override
-    public List<Person> getAllStudent() {
+    public List<Person> getAll() {
         return students;
-    }
-
-    @Override
-    public List<Person> getAllSLecturers() {
-        return null;
     }
 
     @Override
