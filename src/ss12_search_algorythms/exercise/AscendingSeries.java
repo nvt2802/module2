@@ -5,7 +5,7 @@ import java.util.List;
 
 public class AscendingSeries {
     public static void main(String[] args) {
-        String str = "zWelcomeabcxyz";
+        String str = "Welcomeabcxyz";
         List<Character> max = new LinkedList<>();
         int count = 0;
         max.add(str.charAt(0));
@@ -22,10 +22,4 @@ public class AscendingSeries {
 
     }
 }
-/*********************************************************************************
- * 	Tính toán độ phức tạp của bài toán:                                          *
- * 	1 vòng lặp * 1 câu lệnh = n * 1;                                             *
- * 	T(n) = O(n);                                                                 *
- * 	=> Độ phức tạp bài toán này là O(n)                                          *
- *********************************************************************************/
 

@@ -31,11 +31,3 @@ public class FindMaxSubsequence {
         System.out.println(strNew);
     }
 }
-/*********************************************************************************
- * Tính toán độ phức tạp của bài toán này:                                        *
- * 	1 vòng lặp * 3 câu lệnh = 3;                                                  *
- * 	1 vòng lặp * 1 câu lệnh = 1;                                                  *
- *                                                                                *
- * 	T(n) = O(n)                                                                   *
- *  Độ phức tạp của bài toán là O(n)                                           	  *
- *********************************************************************************/
