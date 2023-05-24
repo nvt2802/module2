@@ -7,10 +7,13 @@ public class Products {
     private String name;
     private int price;
 
-    public Products(String ID, String name, int price) {
+    private String productDescription;
+
+    public Products(String ID, String name, int price, String productDescription) {
         this.ID = ID;
         this.name = name;
         this.price = price;
+        this.productDescription = productDescription;
     }
 
     public Products() {

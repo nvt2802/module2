@@ -9,9 +9,11 @@ public class ProductRepository implements IProductRepository {
     private static List<Products> products = new ArrayList<>();
 
     static {
-        products.add(new Products("1", "Nuoc Ngot", 10000));
-        products.add(new Products("2", "Banh", 20000));
-        products.add(new Products("3", "Keo mut", 1000));
+        products.add(new Products("1", "Nuoc Ngot", 10000,"nuoc sieu ngot"));
+        products.add(new Products("2", "Banh", 20000,"Banh hoi do"));
+        products.add(new Products("3", "Keo mut", 3000,"Keo sieu ngon"));
+        products.add(new Products("4", "Cafe", 15000,"Cafe sieu dang"));
+        products.add(new Products("5", "Keo deo", 5000,"Keo sieu deo"));
     }
 
 
@@ -41,13 +43,17 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public Products getByName(String name) {
+    public void getByName(String name) {
+        boolean check = false;
         for (Products p : products) {
-            if (p.getName().equals(name)) {
-                return p;
+            if (p.getName().toLowerCase().contains(name.toLowerCase())) {
+                System.out.println(p);
+                check=true;
             }
         }
-        return null;
+        if (!check){
+            System.out.println("khong tim thay san pham nao cung ten");
+        }
     }
 
     @Override

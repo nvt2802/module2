@@ -49,12 +49,7 @@ public class ProductService implements IProductService {
     public void searchName() {
         System.out.println("Nhap ten san pham can tim");
         String name = scanner.nextLine();
-        Products products = productRepository.getByName(name);
-        if (products == null) {
-            System.out.println("Khong tim thay");
-        } else {
-            System.out.println(products);
-        }
+        productRepository.getByName(name);
     }
 
     @Override
@@ -94,6 +89,8 @@ public class ProductService implements IProductService {
         String name = scanner.nextLine();
         System.out.println("Nhap gia san pham");
         int price = Integer.parseInt(scanner.nextLine());
-        return new Products(id, name, price);
+        System.out.println("Nhap mo ta san pham");
+        String decription = scanner.nextLine();
+        return new Products(id, name, price,decription);
     }
 }

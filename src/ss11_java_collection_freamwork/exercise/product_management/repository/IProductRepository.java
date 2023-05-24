@@ -13,7 +13,7 @@ public interface IProductRepository {
 
     void remove(Products product);
 
-    Products getByName(String name);
+    void getByName(String name);
 
     void sortUpPrice();
 
