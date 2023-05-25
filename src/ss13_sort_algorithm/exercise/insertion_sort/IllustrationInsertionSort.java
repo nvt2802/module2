@@ -3,6 +3,11 @@ package ss13_sort_algorithm.exercise.insertion_sort;
 import java.util.Arrays;
 
 public class IllustrationInsertionSort {
+    /**
+     * @author TanTan
+     * @param array mang can sap xep
+     * minh hoa thuat toan sap xep
+     */
     public static void insertionSort(int[] array) {
         int pos;
         int x;

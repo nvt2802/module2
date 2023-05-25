@@ -3,7 +3,12 @@ package ss12_search_algorythms.exercise;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
 public class BinarySearch {
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 9, 4, 8, 6, 5, 7};
         Arrays.sort(arr);
@@ -20,6 +25,14 @@ public class BinarySearch {
         }
     }
 
+    /**
+     * @author TanTan
+     * @param array
+     * @param left vi tri bat dau tu ben trai cua mang
+     * @param right vi tri ket thuc cua mang
+     * @param value gia tri can tim
+     * @return  vi tri cua gia tri can tim neu khong thay thi tra ve -1
+     */
     public static int binarySearch(int[] array, int left, int right, int value) {
         int middle = (left + right) / 2;
         if (left > right) {

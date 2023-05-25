@@ -3,6 +3,12 @@ package ss13_sort_algorithm.exercise.insertion_sort;
 import java.util.Arrays;
 
 public class SetUpInsertSort {
+
+    /**
+     * @author TanTan
+     * @param list mang can sap xep theo sap xep chen
+     * mang truyen vao se duoc sap xep theo thu tu tu be den lon theo thuat toan sap xep chen
+     */
     public static void insertionSort(int[] list) {
         int index;
         int last;

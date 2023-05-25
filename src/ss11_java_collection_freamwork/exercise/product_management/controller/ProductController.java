@@ -20,7 +20,17 @@ public class ProductController {
             System.out.println("6. Sắp xếp sản phẩm tăng dần, giảm dần theo giá");
             System.out.println("7. Thoát");
             System.out.println("Nhập chức năng theo số:");
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = 0;
+            boolean checkChoice;
+            do {
+                try {
+                    choice = Integer.parseInt(scanner.nextLine());
+                    checkChoice = false;
+                } catch (NumberFormatException numberFormatException) {
+                    System.out.println("vui long nhap so: ");
+                    checkChoice = true;
+                }
+            } while (checkChoice);
             switch (choice) {
                 case 1:
                     productService.add();

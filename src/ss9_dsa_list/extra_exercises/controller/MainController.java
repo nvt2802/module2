@@ -17,17 +17,18 @@ public class MainController {
             System.out.println("--------------------------");
             System.out.println("Chọn chức năng theo số(để tiêp tục):");
             System.out.println("1. Thêm mới giảng vien hoặc học viên");
-            System.out.println("2. Xoá học viên");
-            System.out.println("3. Xem danh sách học viên");
+            System.out.println("2. Xoá giảng vien hoặc học viên");
+            System.out.println("3. Xem danh sách giảng vien hoặc học viên");
             System.out.println("4. Thoát");
             System.out.println("Chọn chức năng");
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice =0;
+            choice = checkChoice(choice);
             switch (choice) {
                 case 1:
                     System.out.println("Ban muon them Giang vien hay hoc vien");
                     System.out.println("1. Hoc vien");
                     System.out.println("2. Giang vien");
-                    choice = Integer.parseInt(scanner.nextLine());
+                    choice = checkChoice(choice);
                     switch (choice) {
                         case 1:
                             studentService.add();
@@ -41,7 +42,7 @@ public class MainController {
                     System.out.println("Ban muon xoa Giang vien hay hoc vien");
                     System.out.println("1. Hoc vien");
                     System.out.println("2. Giang vien");
-                    choice = Integer.parseInt(scanner.nextLine());
+                    choice = checkChoice(choice);
                     switch (choice) {
                         case 1:
                             studentService.delete();
@@ -56,7 +57,7 @@ public class MainController {
                     System.out.println("1. Hoc vien");
                     System.out.println("2. Giang vien");
                     System.out.println("3. Ca hai");
-                    choice = Integer.parseInt(scanner.nextLine());
+                    choice = checkChoice(choice);
                     switch (choice) {
                         case 1:
                             studentService.display();
@@ -76,5 +77,18 @@ public class MainController {
         } while (true);
 
 
+    }
+    private static int checkChoice(int choice){
+        boolean checkChoice ;
+        do {
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                checkChoice=false;
+            }catch (NumberFormatException numberFormatException) {
+                System.out.println("vui long nhap so: ");
+                checkChoice=true;
+            }
+        }while (checkChoice);
+        return choice;
     }
 }
