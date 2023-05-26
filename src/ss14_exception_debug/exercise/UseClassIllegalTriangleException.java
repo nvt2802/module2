@@ -29,6 +29,14 @@ public class UseClassIllegalTriangleException {
         System.out.println(triangle);
     }
 
+    /**
+     * @author tantan
+     * @param side1
+     * @param side2
+     * @param side3
+     * @throws IllegalTriangleException
+     * kiem tra 3 canh nhap vao co phai la 3 canh cua tam giac
+     */
     public static void checkTriangle(int side1, int side2, int side3) throws IllegalTriangleException {
         if (side1 <= 0 || side2 <= 0 || side3 <= 0 || side1 + side2 <= side3 || side1 + side3 <= side2 || side3 + side2 <= side1) {
             throw new IllegalTriangleException("not a triangle");
