@@ -1,6 +1,6 @@
 package ss9_dsa_list.extra_exercises.model;
 
-public class Lecturers extends Person{
+public class Lecturers extends Person {
     private String specialize;
 
     public Lecturers(String ID, String name, String dayOfBirth, String gender, String specialize) {
@@ -12,19 +12,25 @@ public class Lecturers extends Person{
         this.specialize = specialize;
     }
 
-    public Lecturers(){}
+    public Lecturers() {
+    }
 
     public String getSpecialize() {
         return specialize;
     }
+
     public void setSpecialize(String specialize) {
         this.specialize = specialize;
+    }
+
+    public String getInfoToReadFile() {
+        return super.getInfoToReadFile() + "," + this.getSpecialize();
     }
 
     @Override
     public String toString() {
         return "Giảng viên :" +
-                super.toString()+
+                super.toString() +
                 ", Chuyên môn= " + specialize + '\''
                 ;
     }

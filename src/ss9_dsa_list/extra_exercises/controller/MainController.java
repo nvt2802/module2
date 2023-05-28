@@ -1,7 +1,7 @@
 package ss9_dsa_list.extra_exercises.controller;
 
 import ss9_dsa_list.extra_exercises.service.IPersonService;
-import ss9_dsa_list.extra_exercises.service.impl.LecturesService;
+import ss9_dsa_list.extra_exercises.service.impl.LecturersService;
 import ss9_dsa_list.extra_exercises.service.impl.StudentService;
 
 import java.util.Scanner;
@@ -10,9 +10,12 @@ public class MainController {
     private static Scanner scanner = new Scanner(System.in);
     private static IPersonService studentService = new StudentService();
 
-    private static IPersonService lecturesService = new LecturesService();
+    private static IPersonService lecturesService = new LecturersService();
+
 
     public static void menu() {
+        lecturesService.getData();
+        studentService.getData();
         do {
             System.out.println("--------------------------");
             System.out.println("Chọn chức năng theo số(để tiêp tục):");
@@ -21,7 +24,7 @@ public class MainController {
             System.out.println("3. Xem danh sách giảng vien hoặc học viên");
             System.out.println("4. Thoát");
             System.out.println("Chọn chức năng");
-            int choice =0;
+            int choice = 0;
             choice = checkChoice(choice);
             switch (choice) {
                 case 1:
@@ -78,17 +81,18 @@ public class MainController {
 
 
     }
-    private static int checkChoice(int choice){
-        boolean checkChoice ;
+
+    private static int checkChoice(int choice) {
+        boolean checkChoice;
         do {
             try {
                 choice = Integer.parseInt(scanner.nextLine());
-                checkChoice=false;
-            }catch (NumberFormatException numberFormatException) {
+                checkChoice = false;
+            } catch (NumberFormatException numberFormatException) {
                 System.out.println("vui long nhap so: ");
-                checkChoice=true;
+                checkChoice = true;
             }
-        }while (checkChoice);
+        } while (checkChoice);
         return choice;
     }
 }

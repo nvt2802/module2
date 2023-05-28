@@ -34,6 +34,10 @@ public class Student extends Person {
         this.scores = scores;
     }
 
+    public String getInfoToReadFile() {
+        return super.getInfoToReadFile() + "," + this.getClasses() + "," + this.getScores();
+    }
+
     @Override
     public String toString() {
         return "Học viên: " +

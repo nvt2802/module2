@@ -48,6 +48,10 @@ public class Person {
         this.gender = gender;
     }
 
+    public String getInfoToReadFile() {
+        return this.getID() + "," + this.getName() + "," + this.getDayOfBirth() + "," + this.getGender();
+    }
+
     @Override
     public String toString() {
         return "Mã ='" + ID + '\'' +

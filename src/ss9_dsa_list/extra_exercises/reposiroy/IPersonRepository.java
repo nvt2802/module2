@@ -12,4 +12,8 @@ public interface IPersonRepository {
     Person getByID(String id);
 
     void remove(Person person);
+
+    List<Person> getData();
+
+    public void putData(List<Person> personList, boolean append);
 }

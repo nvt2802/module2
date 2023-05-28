@@ -6,4 +6,6 @@ public interface IPersonService {
     void add();
 
     void delete();
+
+    void getData();
 }
