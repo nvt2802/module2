@@ -14,8 +14,6 @@ public class MainController {
 
 
     public static void menu() {
-        lecturesService.getData();
-        studentService.getData();
         do {
             System.out.println("--------------------------");
             System.out.println("Chọn chức năng theo số(để tiêp tục):");

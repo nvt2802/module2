@@ -72,8 +72,4 @@ public class LecturersService implements IPersonService {
         }
     }
 
-    @Override
-    public void getData() {
-        lecturesRepository.getData();
-    }
 }

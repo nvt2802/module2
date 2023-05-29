@@ -7,5 +7,5 @@ public interface IPersonService {
 
     void delete();
 
-    void getData();
+
 }

@@ -1,11 +1,11 @@
 package ss9_dsa_list.extra_exercises.service.impl;
 
-import ss13_sort_algorithm.exercise.insertion_sort.Str;
 import ss9_dsa_list.extra_exercises.model.Person;
 import ss9_dsa_list.extra_exercises.model.Student;
 import ss9_dsa_list.extra_exercises.reposiroy.IPersonRepository;
 import ss9_dsa_list.extra_exercises.reposiroy.impl.StudentRepository;
 import ss9_dsa_list.extra_exercises.service.IPersonService;
+import ss9_dsa_list.extra_exercises.untils.SizeOfStringException;
 
 import java.util.List;
 import java.util.Scanner;
@@ -35,7 +35,17 @@ public class StudentService implements IPersonService {
             System.out.println("vui long nhap dung dinh dang HV-'XXX':");
         } while (true);
         System.out.println("Nhap ten hoc vien:");
-        String name = scanner.nextLine();
+        String name;
+        do {
+            try {
+                name = scanner.nextLine();
+                checkLength(name);
+                break;
+            }catch (SizeOfStringException w){
+                System.out.println(w.getMessage());
+            }
+        }while (true);
+
         System.out.println("Nhap ngay sinh cua hoc vien:");
         String dayOfbirth = scanner.nextLine();
 
@@ -85,8 +95,12 @@ public class StudentService implements IPersonService {
         }
     }
 
-    @Override
-    public void getData() {
-        studentRepository.getData();
+    public void checkLength(String string) throws SizeOfStringException {
+        if(string.length()>50){
+            throw new SizeOfStringException("ki tu qua gioi han");
+        }
+        if (string.length()<=1){
+            throw new SizeOfStringException("chua du ki tu cho phep");
+        }
     }
 }
