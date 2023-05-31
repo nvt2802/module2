@@ -1,0 +1,134 @@
+package case_study.controller;
+
+import case_study.service.IEmployeeService;
+import case_study.service.impl.EmployeeService;
+
+import java.util.Scanner;
+
+public class FuramaController {
+    private static Scanner scanner = new Scanner(System.in);
+    private static IEmployeeService employeeService = new EmployeeService();
+
+    public static void displayMainMenu() {
+        do {
+        System.out.println("--------------------MENU-------------------");
+        System.out.println("|          1. Employee Management         |");
+        System.out.println("|          2. Customer Management         |");
+        System.out.println("|          3. Facility Management         |");
+        System.out.println("|          4. Booking Management          |");
+        System.out.println("|          5. Promotion Management        |");
+        System.out.println("|          6. Exit                        |");
+        System.out.println("-------------------------------------------");
+            System.out.println("Input number for choice: ");
+        byte choice = 0;
+        choice = choiceException(choice);
+            switch (choice) {
+                case 1:
+                    System.out.println("1. Display list employees\n" +
+                            "2. Add new employee\n" +
+                            "3. Edit employee\n" +
+                            "4. Return main menu\n");
+                    choice = choiceException(choice);
+                    switch (choice) {
+                        case 1:
+                            employeeService.display();
+                            break;
+                        case 2:
+                            employeeService.add();
+                            break;
+                        case 3:
+                            employeeService.edit();
+                            break;
+                        case 4:
+                            break;
+                    }
+                    break;
+                case 2:
+                    System.out.println("1. Display list customers\n" +
+                            "2. Add new customer\n" +
+                            "3. Edit customer\n" +
+                            "4. Return main menu\n");
+                    choice = choiceException(choice);
+                    switch (choice) {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                    }
+                    break;
+                case 3:
+                    System.out.println("1. Display list facility\n" +
+                            "2. Add new facility\n" +
+                            "3. Display list facility maintenance\n" +
+                            "4. Return main menu\n");
+                    choice = choiceException(choice);
+                    switch (choice) {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                    }
+                    break;
+                case 4:
+                    System.out.println("1. Add new booking\n" +
+                            "2. Display list booking\n" +
+                            "3. Create new contracts\n" +
+                            "4. Display list contracts\n" +
+                            "5. Edit contracts\n" +
+                            "6. Return main menu\n");
+                    choice = choiceException(choice);
+                    switch (choice) {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                    }
+                    break;
+                case 5:
+                    System.out.println("1. Display list customers use service\n" +
+                            "2. Display list customers get voucher\n" +
+                            "3. Return main menu\n");
+                    choice = choiceException(choice);
+                    switch (choice) {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                    }
+                    break;
+                case 6:
+                    System.exit(1);
+            }
+        }while (true);
+    }
+
+    public static byte choiceException(byte choice) {
+        do {
+            try {
+                choice = Byte.parseByte(scanner.nextLine());
+                break;
+            } catch (NumberFormatException n) {
+                System.out.println("Choice isn't number! Input number:");
+            }
+        } while (true);
+        return choice;
+    }
+}
