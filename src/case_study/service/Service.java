@@ -6,4 +6,7 @@ public interface Service {
     void add();
     void edit();
 
+    void delete();
+
+    void search();
 }

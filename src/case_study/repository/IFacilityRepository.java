@@ -1,4 +1,6 @@
 package case_study.repository;
 
-public interface IFacilityRepository extends Repository{
+import case_study.model.facility_model.Facility;
+
+public interface IFacilityRepository extends Repository<Facility> {
 }

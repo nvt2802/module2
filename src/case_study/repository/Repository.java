@@ -2,6 +2,9 @@ package case_study.repository;
 
 import case_study.model.person_model.Person;
 
-public interface Repository {
+import java.util.List;
 
+public interface Repository<T> {
+    List<T> getAll();
+    void add(T object);
 }

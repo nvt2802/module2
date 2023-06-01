@@ -1,6 +1,10 @@
 package case_study.model.person_model;
 
+import java.util.Objects;
+
 public abstract class Person {
+
+
     private String ID;
     private String name;
     private String dayOfBirth;
@@ -87,5 +91,17 @@ public abstract class Person {
                 ", identityCardNumber='" + identityCardNumber + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(ID, person.ID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID);
     }
 }

@@ -1,22 +1,23 @@
 package case_study.service.impl;
 
 import case_study.model.person_model.Employee;
-import case_study.model.person_model.Person;
 import case_study.repository.IEmployeeRepository;
 import case_study.repository.impl.EmployeeRepository;
 import case_study.service.IEmployeeService;
+import case_study.utils.Regex;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeService implements IEmployeeService {
-    private static IEmployeeRepository employeeRepository = new EmployeeRepository();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final IEmployeeRepository employeeRepository = new EmployeeRepository();
+    private static final Scanner scanner = new Scanner(System.in);
+
     @Override
     public void display() {
-        List<Person> employeeList = employeeRepository.getAll();
-        for (Person p:employeeList
-             ) {
+        List<Employee> employeeList = employeeRepository.getAll();
+        for (Employee p : employeeList
+        ) {
             System.out.println(p);
         }
     }
@@ -24,27 +25,9 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void add() {
-        System.out.println("Input ID:");
-        String id = scanner.nextLine();
-        System.out.println("Input name:");
-        String name = scanner.nextLine();
-        System.out.println("Input day of birth:");
-        String dayOfBirth = scanner.nextLine();
-        System.out.println("Input gender:");
-        String gender = scanner.nextLine();
-        System.out.println("Input identity card number: ");
-        String identity = scanner.nextLine();
-        System.out.println("Input phone number:");
-        String phoneNumber = scanner.nextLine();
-        System.out.println("Input email:");
-        String email = scanner.nextLine();
-        System.out.println("Input academy level:");
-        String academyLevel = scanner.nextLine();
-        System.out.println("Input job position:");
-        String jobPosition = scanner.nextLine();
-        System.out.println("Input salary: ");
-        int salary = Integer.parseInt(scanner.nextLine());
-        Employee employee = new Employee(id,name,dayOfBirth,gender,identity,phoneNumber,email,academyLevel,jobPosition,salary);
+        String id = null;
+        id = Regex.getRegexId(id);
+        Employee employee = inputInforEmployee(id);
         employeeRepository.add(employee);
     }
 
@@ -53,29 +36,130 @@ public class EmployeeService implements IEmployeeService {
         System.out.println("Enter the employee id that needs to be corrected");
         String id = scanner.nextLine();
         Employee employee = employeeRepository.getByID(id);
-        if(employee == null){
+        if (employee == null) {
             System.out.println("Can't find this employee");
-        }else {
-            System.out.println("Input name:");
-            String name = scanner.nextLine();
-            System.out.println("Input day of birth:");
-            String dayOfBirth = scanner.nextLine();
-            System.out.println("Input gender:");
-            String gender = scanner.nextLine();
-            System.out.println("Input identity card number: ");
-            String identity = scanner.nextLine();
-            System.out.println("Input phone number:");
-            String phoneNumber = scanner.nextLine();
-            System.out.println("Input email:");
-            String email = scanner.nextLine();
-            System.out.println("Input academy level:");
-            String academyLevel = scanner.nextLine();
-            System.out.println("Input job position:");
-            String jobPosition = scanner.nextLine();
-            System.out.println("Input salary: ");
-            int salary = Integer.parseInt(scanner.nextLine());
-            employee = new Employee(id,name,dayOfBirth,gender,identity,phoneNumber,email,academyLevel,jobPosition,salary);
+        } else {
+            employee = inputInforEmployee(id);
             employeeRepository.update(employee);
         }
+    }
+
+    @Override
+    public void delete() {
+        System.out.println("Enter the employee id that needs to be delete");
+        String id = scanner.nextLine();
+        Employee employee = employeeRepository.getByID(id);
+        if (employee == null) {
+            System.out.println("Can't find this employee");
+        } else {
+            System.out.println("Are you sure! to delete " + employee.getName());
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+            byte choice = Byte.parseByte(scanner.nextLine());
+            if (choice == 1) {
+                employeeRepository.delete(employee);
+            }
+        }
+    }
+
+    @Override
+    public void search() {
+        System.out.println("Input employee name: ");
+        String name = scanner.nextLine();
+        List<Employee> employee = employeeRepository.getByName(name);
+        if (employee == null) {
+            System.out.println("Can't find this employee");
+        } else {
+            for (Employee e : employee) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    private static Employee inputInforEmployee(String id) {
+        String name = null;
+        name = Regex.getRegexName(name);
+        String dayOfBirth = null;
+        dayOfBirth = Regex.getRegexDate(dayOfBirth);
+        String gender = null;
+        gender = Regex.getRegexGender(gender);
+        String identity = null;
+        identity = Regex.getRegexIdentity(identity);
+        String phoneNumber = null;
+        phoneNumber = Regex.getRegexPhoneNumber(phoneNumber);
+        String email = null;
+        email = Regex.getRegexEmail(email);
+        String academyLevel = null;
+        byte choice;
+        do {
+            System.out.println("Choice academy level:\n" +
+                    "1. Intermediate\n" +
+                    "2. College\n" +
+                    "3. Undergraduate\n" +
+                    "4. Graduate\n");
+            choice = Byte.parseByte(scanner.nextLine());
+
+
+            switch (choice) {
+                case 1:
+                    academyLevel = "Intermediate";
+                    break;
+                case 2:
+                    academyLevel = "College";
+                    break;
+                case 3:
+                    academyLevel = "Undergraduate";
+                    break;
+                case 4:
+                    academyLevel = "Graduate";
+                    break;
+            }
+        } while (academyLevel == null);
+        System.out.println("Input job position:");
+        String jobPosition = null;
+        do {
+            System.out.println("Choice job position:\n" +
+                    "1. Receptionist\n" +
+                    "2. Waiter\n" +
+                    "3. Specialist\n" +
+                    "4. Supervisor\n" +
+                    "5. Manager\n" +
+                    "5. Director\n"
+            );
+            choice = Byte.parseByte(scanner.nextLine());
+
+            switch (choice) {
+                case 1:
+                    jobPosition = "Receptionist";
+                    break;
+                case 2:
+                    jobPosition = "Waiter";
+                    break;
+                case 3:
+                    jobPosition = "Specialist";
+                    break;
+                case 4:
+                    jobPosition = "Supervisor";
+                    break;
+                case 5:
+                    jobPosition = "Manager";
+                    break;
+            }
+        } while (jobPosition == null);
+        int salary;
+        do {
+            try {
+                System.out.println("Input salary: ");
+                salary = Integer.parseInt(scanner.nextLine());
+                if (salary > 0) {
+                    break;
+                } else {
+                    System.out.println("Salary must be greater than 0");
+                }
+            } catch (NumberFormatException n) {
+                System.out.println("Not a Number!");
+            }
+        } while (true);
+        return new Employee(id, name, dayOfBirth, gender, identity, phoneNumber, email, academyLevel, jobPosition, salary);
     }
 }

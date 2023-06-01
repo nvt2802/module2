@@ -1,4 +1,6 @@
 package case_study.repository;
 
-public interface ICustomerRepository extends Repository{
+import case_study.model.person_model.Customer;
+
+public interface ICustomerRepository extends Repository<Customer> {
 }

@@ -1,13 +1,16 @@
 package case_study.controller;
 
+import case_study.service.ICustomerService;
 import case_study.service.IEmployeeService;
+import case_study.service.impl.CustomerService;
 import case_study.service.impl.EmployeeService;
 
 import java.util.Scanner;
 
 public class FuramaController {
-    private static Scanner scanner = new Scanner(System.in);
-    private static IEmployeeService employeeService = new EmployeeService();
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final IEmployeeService employeeService = new EmployeeService();
+    private static final ICustomerService customerService = new CustomerService();
 
     public static void displayMainMenu() {
         do {
@@ -27,7 +30,10 @@ public class FuramaController {
                     System.out.println("1. Display list employees\n" +
                             "2. Add new employee\n" +
                             "3. Edit employee\n" +
-                            "4. Return main menu\n");
+                            "4. Delete employee\n" +
+                            "5. Search employee\n" +
+                            "6. Return main menu\n"
+                    );
                     choice = choiceException(choice);
                     switch (choice) {
                         case 1:
@@ -40,23 +46,37 @@ public class FuramaController {
                             employeeService.edit();
                             break;
                         case 4:
+                            employeeService.delete();
+                            break;
+                        case 5:
+                            employeeService.search();
+                            break;
+                        case 6:
                             break;
                     }
                     break;
                 case 2:
-                    System.out.println("1. Display list customers\n" +
-                            "2. Add new customer\n" +
-                            "3. Edit customer\n" +
-                            "4. Return main menu\n");
+                    System.out.println("1.\tDisplay list customers\n" +
+                            "2.\tAdd new customer\n" +
+                            "3.\tEdit customer\n" +
+                            "4.\tDelete customer\n" +
+                            "5.\tSearch by name customer\n" +
+                            "6.\tReturn main menu\n");
                     choice = choiceException(choice);
                     switch (choice) {
                         case 1:
+                            customerService.display();
                             break;
                         case 2:
+                            customerService.add();
                             break;
                         case 3:
                             break;
                         case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
                             break;
                     }
                     break;
