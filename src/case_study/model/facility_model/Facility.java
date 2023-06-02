@@ -5,7 +5,7 @@ package case_study.model.facility_model;
 public abstract class Facility {
     private String serviceID;
     private String serviceName;
-    private String usableArea;
+    private int usableArea;
     private int rentalCosts;
     private int maximumNumberOfPeople;
     private String rentalType;
@@ -13,7 +13,7 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String serviceID, String serviceName, String usableArea, int rentalCosts, int maximumNumberOfPeople, String rentalType) {
+    public Facility(String serviceID, String serviceName, int usableArea, int rentalCosts, int maximumNumberOfPeople, String rentalType) {
         this.serviceID = serviceID;
         this.serviceName = serviceName;
         this.usableArea = usableArea;
@@ -38,11 +38,11 @@ public abstract class Facility {
         this.serviceName = serviceName;
     }
 
-    public String getUsableArea() {
+    public int getUsableArea() {
         return usableArea;
     }
 
-    public void setUsableArea(String usableArea) {
+    public void setUsableArea(int usableArea) {
         this.usableArea = usableArea;
     }
 
@@ -72,13 +72,11 @@ public abstract class Facility {
 
     @Override
     public String toString() {
-        return "Facility{" +
-                "serviceID='" + serviceID + '\'' +
+        return "serviceID='" + serviceID + '\'' +
                 ", serviceName='" + serviceName + '\'' +
                 ", usableArea='" + usableArea + '\'' +
                 ", rentalCosts=" + rentalCosts +
                 ", maximumNumberOfPeople=" + maximumNumberOfPeople +
-                ", rentalType='" + rentalType + '\'' +
-                '}';
+                ", rentalType='" + rentalType ;
     }
 }

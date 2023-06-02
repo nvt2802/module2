@@ -52,8 +52,7 @@ public class EmployeeRepository implements IEmployeeRepository {
             }
         }
         List<String> stringList= new ArrayList<>();
-        for (Employee p :employeeList
-             ) {
+        for (Employee p :employeeList) {
             stringList.add(p.getID()+","+p.getName()+","+p.getDayOfBirth()+","+p.getGender()+","+p.getIdentityCardNumber()+","+p.getPhoneNumber()+","+p.getEmail()+","+p.getAcademicLevel()+","+p.getJobPosition()+","+p.getSalary());
         }
         ReadAndWriteFile.writeFile(EMPLOYEE_LIST_PATH,stringList,false);

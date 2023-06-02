@@ -25,8 +25,21 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void add() {
+        boolean check;
         String id = null;
-        id = Regex.getRegexId(id);
+        do {
+            check = false;
+            id = Regex.getRegexEmployeeId(id);
+            List<Employee> employeeList = employeeRepository.getAll();
+            for (Employee p : employeeList
+            ) {
+                if (p.getID().equals(id)) {
+                    System.out.println("ID already exists");
+                    check=true;
+                    break;
+                }
+            }
+        }while (check);
         Employee employee = inputInforEmployee(id);
         employeeRepository.add(employee);
     }

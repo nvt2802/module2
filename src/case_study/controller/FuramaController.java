@@ -2,8 +2,10 @@ package case_study.controller;
 
 import case_study.service.ICustomerService;
 import case_study.service.IEmployeeService;
+import case_study.service.IFacilityService;
 import case_study.service.impl.CustomerService;
 import case_study.service.impl.EmployeeService;
+import case_study.service.impl.FacilityService;
 
 import java.util.Scanner;
 
@@ -11,6 +13,7 @@ public class FuramaController {
     private static final Scanner scanner = new Scanner(System.in);
     private static final IEmployeeService employeeService = new EmployeeService();
     private static final ICustomerService customerService = new CustomerService();
+    private static final IFacilityService facilityService = new FacilityService();
 
     public static void displayMainMenu() {
         do {
@@ -71,29 +74,37 @@ public class FuramaController {
                             customerService.add();
                             break;
                         case 3:
+                            customerService.edit();
                             break;
                         case 4:
+                            customerService.delete();
                             break;
                         case 5:
+                            customerService.search();
                             break;
                         case 6:
                             break;
                     }
                     break;
                 case 3:
-                    System.out.println("1. Display list facility\n" +
+                    System.out.println("1. tDisplay list facility\n" +
                             "2. Add new facility\n" +
                             "3. Display list facility maintenance\n" +
-                            "4. Return main menu\n");
+                            "4. Delete facility\n" +
+                            "5. Return main menu\n");
                     choice = choiceException(choice);
                     switch (choice) {
                         case 1:
+                            facilityService.display();
                             break;
                         case 2:
+                            facilityService.add();
                             break;
                         case 3:
+
                             break;
                         case 4:
+                            facilityService.delete();
                             break;
                     }
                     break;
