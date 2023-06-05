@@ -12,4 +12,5 @@ public interface ICustomerRepository extends Repository<Customer> {
     void delete(Customer customer);
 
     List<Customer> getByName(String name);
+    void add(Customer customer);
 }

@@ -10,6 +10,8 @@ import case_study.repository.impl.FacilityRepository;
 import case_study.service.IFacilityService;
 import case_study.utils.Regex;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class FacilityService implements IFacilityService {
@@ -18,7 +20,10 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public void display() {
-
+        List<Facility> facilityList = facilityRepository.getAll();
+        for (Facility f:facilityList) {
+            System.out.println(f);
+        }
     }
 
     @Override
@@ -31,17 +36,17 @@ public class FacilityService implements IFacilityService {
         switch (choice) {
             case 1:
                 Villa villa=addVilla();
-                facilityRepository.addVilla(villa);
+                facilityRepository.addVilla(villa,false);
                 break;
             case 2:
                 //House(serviceID,serviceName,usableArea,rentalCosts,maximumNumberOfPeople,rentalType,roomStandard,numberOfFloors)
                 House house = addHouse();
-                facilityRepository.addHouse(house);
+                facilityRepository.addHouse(house,false);
                 break;
             case 3:
                 //Room(serviceID,serviceName,usableArea,rentalCosts,maximumNumberOfPeople,rentalType,freeServiceIncluded)
                 Room room = addRoom();
-                facilityRepository.addRoom(room);
+                facilityRepository.addRoom(room,false);
                 break;
             case 4:
                 break;
@@ -55,7 +60,20 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public void delete() {
-
+        System.out.println("Input ID service to delete:");
+        String idDelete = scanner.nextLine();
+        Facility facility = facilityRepository.GetByID(idDelete);
+        if(facility==null){
+            System.out.println("Can't find this facility!");
+        }else {
+            System.out.println("Are you sure to delete this facility");
+            System.out.println("Input 'Yes' to delete:");
+            String choiceDelete= scanner.nextLine();
+            if(choiceDelete.equals("Yes")){
+                facilityRepository.delete(facility);
+                System.out.println("Delete complete!");
+            }
+        }
     }
 
     @Override
@@ -76,6 +94,11 @@ public class FacilityService implements IFacilityService {
         String rentalType = null;
         do {
             byte choice = 0;
+            System.out.println("Input rental type\n" +
+                    "1. Hours\n"+
+                    "2. Days\n"+
+                    "3. Moths\n"+
+                    "4. Years\n");
             choice = FuramaController.choiceException(choice);
             switch (choice) {
                 case 1:
@@ -113,6 +136,11 @@ public class FacilityService implements IFacilityService {
         String rentalType = null;
         do {
             byte choice = 0;
+            System.out.println("Input rental type\n" +
+                    "1. Hours\n"+
+                    "2. Days\n"+
+                    "3. Moths\n"+
+                    "4. Years\n");
             choice = FuramaController.choiceException(choice);
             switch (choice) {
                 case 1:
@@ -135,8 +163,8 @@ public class FacilityService implements IFacilityService {
         String roomStandard = null;
         System.out.println("Input Room Standard:");
         roomStandard=Regex.getRegexFacilityName(roomStandard);
-        System.out.println("Input number of floors");
-        int numberOfFloors=Integer.parseInt(scanner.nextLine());
+        int numberOfFloors=0;
+        numberOfFloors=Regex.getRegexNumberOfFloors(numberOfFloors);
         return new House(id,serviceName,usableArea,rentalCosts,maximumNumberOfPeople,rentalType,roomStandard,numberOfFloors);
     }
 
@@ -155,6 +183,11 @@ public class FacilityService implements IFacilityService {
         String rentalType = null;
         do {
             byte choice = 0;
+            System.out.println("Input rental type\n" +
+                    "1. Hours\n"+
+                    "2. Days\n"+
+                    "3. Moths\n"+
+                    "4. Years\n");
             choice = FuramaController.choiceException(choice);
             switch (choice) {
                 case 1:
@@ -179,8 +212,18 @@ public class FacilityService implements IFacilityService {
         roomStandard=Regex.getRegexFacilityName(roomStandard);
         int poolArea =0;
         poolArea=Regex.getRegexArea(poolArea);
-        int numberOfFloors=Integer.parseInt(scanner.nextLine());
+        int numberOfFloors=0;
+        numberOfFloors=Regex.getRegexNumberOfFloors(numberOfFloors);
         return new Villa(id,serviceName,usableArea,rentalCosts,maximumNumberOfPeople,rentalType,roomStandard,poolArea,numberOfFloors);
+    }
+
+    @Override
+    public void displayMaintenance() {
+       List<Facility> facilities = facilityRepository.getAllMaintenance();
+        for (Facility f: facilities
+             ) {
+            System.out.println(f);
+        }
     }
 
     //serviceID,serviceName,usableArea,rentalCosts,maximumNumberOfPeople,rentalType,

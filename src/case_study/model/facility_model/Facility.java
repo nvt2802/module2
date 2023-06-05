@@ -1,6 +1,7 @@
 package case_study.model.facility_model;
 
 
+import java.util.Objects;
 
 public abstract class Facility {
     private String serviceID;
@@ -78,5 +79,18 @@ public abstract class Facility {
                 ", rentalCosts=" + rentalCosts +
                 ", maximumNumberOfPeople=" + maximumNumberOfPeople +
                 ", rentalType='" + rentalType ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Facility facility = (Facility) o;
+        return Objects.equals(serviceID, facility.serviceID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serviceID);
     }
 }

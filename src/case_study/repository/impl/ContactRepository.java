@@ -11,8 +11,5 @@ public class ContactRepository implements IContactRepository {
         return null;
     }
 
-    @Override
-    public void add(Contract object) {
 
-    }
 }

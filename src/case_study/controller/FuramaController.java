@@ -1,11 +1,8 @@
 package case_study.controller;
 
-import case_study.service.ICustomerService;
-import case_study.service.IEmployeeService;
-import case_study.service.IFacilityService;
-import case_study.service.impl.CustomerService;
-import case_study.service.impl.EmployeeService;
-import case_study.service.impl.FacilityService;
+import case_study.service.*;
+import case_study.service.impl.*;
+import sun.nio.cs.ext.IBM037;
 
 import java.util.Scanner;
 
@@ -14,6 +11,8 @@ public class FuramaController {
     private static final IEmployeeService employeeService = new EmployeeService();
     private static final ICustomerService customerService = new CustomerService();
     private static final IFacilityService facilityService = new FacilityService();
+    private static final IBookingService bookingService = new BookingService();
+    private static final IContactService contactService = new ContactService();
 
     public static void displayMainMenu() {
         do {
@@ -87,7 +86,7 @@ public class FuramaController {
                     }
                     break;
                 case 3:
-                    System.out.println("1. tDisplay list facility\n" +
+                    System.out.println("1. Display list facility\n" +
                             "2. Add new facility\n" +
                             "3. Display list facility maintenance\n" +
                             "4. Delete facility\n" +
@@ -101,7 +100,7 @@ public class FuramaController {
                             facilityService.add();
                             break;
                         case 3:
-
+                            facilityService.displayMaintenance();
                             break;
                         case 4:
                             facilityService.delete();
@@ -118,14 +117,19 @@ public class FuramaController {
                     choice = choiceException(choice);
                     switch (choice) {
                         case 1:
+                            bookingService.add();
                             break;
                         case 2:
+                            bookingService.display();
                             break;
                         case 3:
+                            contactService.add();
                             break;
                         case 4:
+                            contactService.display();
                             break;
                         case 5:
+                            contactService.edit();
                             break;
                         case 6:
                             break;

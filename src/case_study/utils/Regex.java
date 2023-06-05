@@ -43,10 +43,10 @@ public class Regex {
         do {
             System.out.println("Input ID('SV'XX-YYYY)");
             id = scanner.nextLine();
-            if (!id.matches(Regex.REGEX_EMPLOYEE_ID)) {
+            if (!id.matches(Regex.REGEX_FACILITY_ID)) {
                 System.out.println("ID wrong!");
             }
-        } while (!id.matches(Regex.REGEX_EMPLOYEE_ID));
+        } while (!id.matches(Regex.REGEX_FACILITY_ID));
         return id;
     }
     public static String getRegexCustomerId(String id){
@@ -206,5 +206,22 @@ public class Regex {
             }
         }while (true);
         return maximumNumberOfPeople;
+    }
+    public static int getRegexNumberOfFloors(int number){
+        do {
+            try {
+                System.out.println("Input number of floors:");
+                number=Integer.parseInt(scanner.nextLine());
+                if(number>0) {
+                    break;
+                }else {
+                    System.out.println("Number of floors must greater than 0");
+                }
+            }catch (NumberFormatException numberFormatException){
+                System.out.println("Is not a Number!");
+            }
+
+        }while (true);
+        return number;
     }
 }
