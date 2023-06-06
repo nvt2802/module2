@@ -21,7 +21,7 @@ public class FacilityService implements IFacilityService {
     @Override
     public void display() {
         List<Facility> facilityList = facilityRepository.getAll();
-        for (Facility f:facilityList) {
+        for (Facility f : facilityList) {
             System.out.println(f);
         }
     }
@@ -35,18 +35,18 @@ public class FacilityService implements IFacilityService {
         byte choice = Byte.parseByte(scanner.nextLine());
         switch (choice) {
             case 1:
-                Villa villa=addVilla();
-                facilityRepository.addVilla(villa,false);
+                Villa villa = addVilla();
+                facilityRepository.addVilla(villa, false);
                 break;
             case 2:
                 //House(serviceID,serviceName,usableArea,rentalCosts,maximumNumberOfPeople,rentalType,roomStandard,numberOfFloors)
                 House house = addHouse();
-                facilityRepository.addHouse(house,false);
+                facilityRepository.addHouse(house, false);
                 break;
             case 3:
                 //Room(serviceID,serviceName,usableArea,rentalCosts,maximumNumberOfPeople,rentalType,freeServiceIncluded)
                 Room room = addRoom();
-                facilityRepository.addRoom(room,false);
+                facilityRepository.addRoom(room, false);
                 break;
             case 4:
                 break;
@@ -54,33 +54,24 @@ public class FacilityService implements IFacilityService {
     }
 
     @Override
-    public void edit() {
-
-    }
-
-    @Override
     public void delete() {
         System.out.println("Input ID service to delete:");
         String idDelete = scanner.nextLine();
         Facility facility = facilityRepository.GetByID(idDelete);
-        if(facility==null){
+        if (facility == null) {
             System.out.println("Can't find this facility!");
-        }else {
+        } else {
             System.out.println("Are you sure to delete this facility");
             System.out.println("Input 'Yes' to delete:");
-            String choiceDelete= scanner.nextLine();
-            if(choiceDelete.equals("Yes")){
+            String choiceDelete = scanner.nextLine();
+            if (choiceDelete.equals("Yes")) {
                 facilityRepository.delete(facility);
                 System.out.println("Delete complete!");
             }
         }
     }
 
-    @Override
-    public void search() {
-
-    }
-    public Room addRoom(){
+    public Room addRoom() {
         String id = null;
         id = Regex.getRegexFacilityId(id);
         String serviceName = null;
@@ -95,9 +86,9 @@ public class FacilityService implements IFacilityService {
         do {
             byte choice = 0;
             System.out.println("Input rental type\n" +
-                    "1. Hours\n"+
-                    "2. Days\n"+
-                    "3. Moths\n"+
+                    "1. Hours\n" +
+                    "2. Days\n" +
+                    "3. Moths\n" +
                     "4. Years\n");
             choice = FuramaController.choiceException(choice);
             switch (choice) {
@@ -114,15 +105,16 @@ public class FacilityService implements IFacilityService {
                     rentalType = "Years";
                     break;
             }
-            if(rentalType==null){
+            if (rentalType == null) {
                 System.out.println("Rental can't have type!");
             }
-        }while (rentalType==null);
+        } while (rentalType == null);
         System.out.println("Input free service included:");
         String freeServiceIncluded = scanner.nextLine();
-        return new Room(id,serviceName,usableArea,rentalCosts,maximumNumberOfPeople,rentalType,freeServiceIncluded);
+        return new Room(id, serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType, freeServiceIncluded);
     }
-    public House addHouse(){
+
+    public House addHouse() {
         String id = null;
         id = Regex.getRegexFacilityId(id);
         String serviceName = null;
@@ -137,9 +129,9 @@ public class FacilityService implements IFacilityService {
         do {
             byte choice = 0;
             System.out.println("Input rental type\n" +
-                    "1. Hours\n"+
-                    "2. Days\n"+
-                    "3. Moths\n"+
+                    "1. Hours\n" +
+                    "2. Days\n" +
+                    "3. Moths\n" +
                     "4. Years\n");
             choice = FuramaController.choiceException(choice);
             switch (choice) {
@@ -156,16 +148,16 @@ public class FacilityService implements IFacilityService {
                     rentalType = "Years";
                     break;
             }
-            if(rentalType==null){
+            if (rentalType == null) {
                 System.out.println("Rental can't have type!");
             }
-        }while (rentalType==null);
+        } while (rentalType == null);
         String roomStandard = null;
         System.out.println("Input Room Standard:");
-        roomStandard=Regex.getRegexFacilityName(roomStandard);
-        int numberOfFloors=0;
-        numberOfFloors=Regex.getRegexNumberOfFloors(numberOfFloors);
-        return new House(id,serviceName,usableArea,rentalCosts,maximumNumberOfPeople,rentalType,roomStandard,numberOfFloors);
+        roomStandard = Regex.getRegexFacilityName(roomStandard);
+        int numberOfFloors = 0;
+        numberOfFloors = Regex.getRegexNumberOfFloors(numberOfFloors);
+        return new House(id, serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType, roomStandard, numberOfFloors);
     }
 
     public Villa addVilla() {
@@ -184,9 +176,9 @@ public class FacilityService implements IFacilityService {
         do {
             byte choice = 0;
             System.out.println("Input rental type\n" +
-                    "1. Hours\n"+
-                    "2. Days\n"+
-                    "3. Moths\n"+
+                    "1. Hours\n" +
+                    "2. Days\n" +
+                    "3. Moths\n" +
                     "4. Years\n");
             choice = FuramaController.choiceException(choice);
             switch (choice) {
@@ -203,25 +195,25 @@ public class FacilityService implements IFacilityService {
                     rentalType = "Years";
                     break;
             }
-            if(rentalType==null){
+            if (rentalType == null) {
                 System.out.println("Rental can't have type!");
             }
-        }while (rentalType==null);
+        } while (rentalType == null);
         String roomStandard = null;
         System.out.println("Input Room Standard:");
-        roomStandard=Regex.getRegexFacilityName(roomStandard);
-        int poolArea =0;
-        poolArea=Regex.getRegexArea(poolArea);
-        int numberOfFloors=0;
-        numberOfFloors=Regex.getRegexNumberOfFloors(numberOfFloors);
-        return new Villa(id,serviceName,usableArea,rentalCosts,maximumNumberOfPeople,rentalType,roomStandard,poolArea,numberOfFloors);
+        roomStandard = Regex.getRegexFacilityName(roomStandard);
+        int poolArea = 0;
+        poolArea = Regex.getRegexArea(poolArea);
+        int numberOfFloors = 0;
+        numberOfFloors = Regex.getRegexNumberOfFloors(numberOfFloors);
+        return new Villa(id, serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType, roomStandard, poolArea, numberOfFloors);
     }
 
     @Override
     public void displayMaintenance() {
-       List<Facility> facilities = facilityRepository.getAllMaintenance();
-        for (Facility f: facilities
-             ) {
+        List<Facility> facilities = facilityRepository.getAllMaintenance();
+        for (Facility f : facilities
+        ) {
             System.out.println(f);
         }
     }

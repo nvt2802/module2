@@ -12,11 +12,12 @@ import java.util.Scanner;
 public class CustomerService implements ICustomerService {
     private static final Scanner scanner = new Scanner(System.in);
     private static final ICustomerRepository customerRepository = new CustomerRepository();
+
     @Override
     public void display() {
         List<Customer> customers = customerRepository.getAll();
-        for (Customer c:customers
-             ) {
+        for (Customer c : customers
+        ) {
             System.out.println(c);
         }
 
@@ -29,16 +30,16 @@ public class CustomerService implements ICustomerService {
         do {
             check = false;
             id = Regex.getRegexCustomerId(id);
-            List<Customer> customerList =customerRepository.getAll();
+            List<Customer> customerList = customerRepository.getAll();
             for (Customer c : customerList
             ) {
                 if (c.getID().equals(id)) {
                     System.out.println("ID already exists");
-                    check=true;
+                    check = true;
                     break;
                 }
             }
-        }while (check);
+        } while (check);
         Customer customer = inputInfoCustomer(id);
         customerRepository.add(customer);
     }
@@ -87,6 +88,7 @@ public class CustomerService implements ICustomerService {
             }
         }
     }
+
     private static Customer inputInfoCustomer(String id) {
         String name = null;
         name = Regex.getRegexName(name);
@@ -100,7 +102,7 @@ public class CustomerService implements ICustomerService {
         phoneNumber = Regex.getRegexPhoneNumber(phoneNumber);
         String email = null;
         email = Regex.getRegexEmail(email);
-        String customerLevel =null;
+        String customerLevel = null;
         do {
             System.out.println("Customer Level:\n" +
                     "1. Diamond\n" +
@@ -109,12 +111,12 @@ public class CustomerService implements ICustomerService {
                     "4. Silver\n" +
                     "5. Member");
             byte choice = Byte.parseByte(scanner.nextLine());
-            switch (choice){
+            switch (choice) {
                 case 1:
-                    customerLevel="Diamond";
+                    customerLevel = "Diamond";
                     break;
                 case 2:
-                    customerLevel="Platinum";
+                    customerLevel = "Platinum";
                     break;
                 case 3:
                     customerLevel = "Gold";
@@ -128,11 +130,11 @@ public class CustomerService implements ICustomerService {
                 default:
                     System.out.println("Not a level! please re-input:");
             }
-        }while (customerLevel == null);
+        } while (customerLevel == null);
         System.out.println("Input address: ");
         String address = scanner.nextLine();
-        return new Customer(id, name, dayOfBirth, gender, identity, phoneNumber, email,customerLevel,address);
+        return new Customer(id, name, dayOfBirth, gender, identity, phoneNumber, email, customerLevel, address);
     }
-  //  (String ID, String name, String dayOfBirth, String gender, String identityCardNumber, String phoneNumber, String email, String customerLevel, String address) {
+    //  (String ID, String name, String dayOfBirth, String gender, String identityCardNumber, String phoneNumber, String email, String customerLevel, String address) {
 
 }

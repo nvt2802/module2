@@ -35,11 +35,11 @@ public class EmployeeService implements IEmployeeService {
             ) {
                 if (p.getID().equals(id)) {
                     System.out.println("ID already exists");
-                    check=true;
+                    check = true;
                     break;
                 }
             }
-        }while (check);
+        } while (check);
         Employee employee = inputInforEmployee(id);
         employeeRepository.add(employee);
     }

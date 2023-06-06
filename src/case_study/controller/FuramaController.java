@@ -16,17 +16,17 @@ public class FuramaController {
 
     public static void displayMainMenu() {
         do {
-        System.out.println("--------------------MENU-------------------");
-        System.out.println("|          1. Employee Management         |");
-        System.out.println("|          2. Customer Management         |");
-        System.out.println("|          3. Facility Management         |");
-        System.out.println("|          4. Booking Management          |");
-        System.out.println("|          5. Promotion Management        |");
-        System.out.println("|          6. Exit                        |");
-        System.out.println("-------------------------------------------");
+            System.out.println("--------------------MENU-------------------");
+            System.out.println("|          1. Employee Management         |");
+            System.out.println("|          2. Customer Management         |");
+            System.out.println("|          3. Facility Management         |");
+            System.out.println("|          4. Booking Management          |");
+            System.out.println("|          5. Promotion Management        |");
+            System.out.println("|          6. Exit                        |");
+            System.out.println("-------------------------------------------");
             System.out.println("Input number for choice: ");
-        byte choice = 0;
-        choice = choiceException(choice);
+            byte choice = 0;
+            choice = choiceException(choice);
             switch (choice) {
                 case 1:
                     System.out.println("1. Display list employees\n" +
@@ -152,7 +152,7 @@ public class FuramaController {
                 case 6:
                     System.exit(1);
             }
-        }while (true);
+        } while (true);
     }
 
     public static byte choiceException(byte choice) {

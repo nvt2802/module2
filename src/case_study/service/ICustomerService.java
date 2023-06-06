@@ -1,4 +1,7 @@
 package case_study.service;
 
 public interface ICustomerService extends Service{
+    void edit();
+    void search();
+    void delete();
 }

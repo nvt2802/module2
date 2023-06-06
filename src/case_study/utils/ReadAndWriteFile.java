@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWriteFile {
-    public static List<String> readFile(String path){
+    public static List<String> readFile(String path) {
         List<String> stringList = new ArrayList<>();
         try {
             FileReader fileReader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = null;
-            while ((line = bufferedReader.readLine())!=null){
+            while ((line = bufferedReader.readLine()) != null) {
                 stringList.add(line);
             }
             bufferedReader.close();
@@ -22,11 +22,12 @@ public class ReadAndWriteFile {
         }
         return stringList;
     }
-    public static void writeFile(String path, List<String> stringList, boolean append){
+
+    public static void writeFile(String path, List<String> stringList, boolean append) {
         try {
-            FileWriter fileWriter = new FileWriter(path,append);
+            FileWriter fileWriter = new FileWriter(path, append);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for (String s: stringList){
+            for (String s : stringList) {
                 bufferedWriter.write(s);
                 bufferedWriter.newLine();
             }

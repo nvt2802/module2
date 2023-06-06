@@ -57,33 +57,37 @@ public class FacilityRepository implements IFacilityRepository {
         facilityList.addAll(houseSet);
         return facilityList;
     }
-    public static void setCountVilla(Villa villa){
+
+    public static void setCountVilla(Villa villa) {
         int count = villaIntegerMap.get(villa);
-        if (count == 5){
-            count=0;
-        }else {
+        if (count == 5) {
+            count = 0;
+        } else {
             count++;
         }
-        villaIntegerMap.replace(villa,count);
+        villaIntegerMap.replace(villa, count);
     }
-    public static void setCountHouse(House house){
+
+    public static void setCountHouse(House house) {
         int count = houseIntegerMap.get(house);
-        if (count == 5){
-            count=0;
-        }else {
+        if (count == 5) {
+            count = 0;
+        } else {
             count++;
         }
-        houseIntegerMap.replace(house,count);
+        houseIntegerMap.replace(house, count);
     }
-    public static void setCountRoom(Room room){
+
+    public static void setCountRoom(Room room) {
         int count = roomIntegerMap.get(room);
-        if (count == 5){
-            count=0;
-        }else {
+        if (count == 5) {
+            count = 0;
+        } else {
             count++;
         }
-        roomIntegerMap.replace(room,count);
+        roomIntegerMap.replace(room, count);
     }
+
     @Override
     public void addVilla(Villa villa, boolean append) {
         List<String> villas = ReadAndWriteFile.readFile(VILLA_LIST_PATH);
@@ -157,8 +161,8 @@ public class FacilityRepository implements IFacilityRepository {
         facilityIntegerMap.putAll(houseIntegerMap);
         facilityIntegerMap.putAll(roomIntegerMap);
         Set<Facility> key = facilityIntegerMap.keySet();
-        for (Facility k:key) {
-            if(facilityIntegerMap.get(k)>=5){
+        for (Facility k : key) {
+            if (facilityIntegerMap.get(k) >= 5) {
                 facilities.add(k);
             }
         }

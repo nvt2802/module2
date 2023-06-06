@@ -10,6 +10,7 @@ import case_study.repository.impl.BookingRepository;
 import case_study.repository.impl.CustomerRepository;
 import case_study.repository.impl.FacilityRepository;
 import case_study.service.IBookingService;
+import case_study.utils.Regex;
 
 import java.util.List;
 import java.util.Scanner;
@@ -23,8 +24,8 @@ public class BookingService implements IBookingService {
     @Override
     public void display() {
         List<Booking> bookingList = bookingRepository.getAll();
-        for (Booking b: bookingList
-             ) {
+        for (Booking b : bookingList
+        ) {
             System.out.println(b);
         }
     }
@@ -61,31 +62,43 @@ public class BookingService implements IBookingService {
                 break;
             }
         } while (true);
-        System.out.println("Input booking id:");
-        String idBooking = scanner.nextLine();
-        System.out.println("Input day booking:");
-        String dayBooking = scanner.nextLine();
-        System.out.println("Input start date booking:");
-        String rentalStartDate = scanner.nextLine();
-        System.out.println("Input lease end date:");
-        String leaseEndDate = scanner.nextLine();
+        String idBooking;
+        do {
+            System.out.println("Input booking id:");
+            idBooking = scanner.nextLine();
+        } while (Regex.getRegexBookingID(idBooking));
+        String dayBooking;
+        do {
+            System.out.println("Input day booking:");
+            dayBooking = scanner.nextLine();
+            if (!dayBooking.matches(Regex.REGEX_DATE)) {
+                System.out.println("Not date format!");
+            } else {
+                break;
+            }
+        } while (true);
+        String rentalStartDate;
+        do {
+            System.out.println("Input start date booking:");
+            rentalStartDate = scanner.nextLine();
+            if (!rentalStartDate.matches(Regex.REGEX_DATE)) {
+                System.out.println("Not date format!");
+            } else {
+                break;
+            }
+        } while (true);
+        String leaseEndDate;
+        do {
+            System.out.println("Input lease end date:");
+            leaseEndDate = scanner.nextLine();
+            if (!leaseEndDate.matches(Regex.REGEX_DATE)) {
+                System.out.println("Not date format!");
+            } else {
+                break;
+            }
+        } while (true);
         Booking booking = new Booking(idBooking, dayBooking, rentalStartDate, leaseEndDate, customer.getID(), facility.getServiceID());
         bookingRepository.add(booking);
     }
 //Booking(String bookingID, String dayBooking, String rentalStartDate, String leaseEndDate, String customerID, String serviceID) {
-
-    @Override
-    public void edit() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
-
-    @Override
-    public void search() {
-
-    }
 }
