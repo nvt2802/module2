@@ -13,6 +13,7 @@ public class FuramaController {
     private static final IFacilityService facilityService = new FacilityService();
     private static final IBookingService bookingService = new BookingService();
     private static final IContactService contactService = new ContactService();
+    private static final IPromotionService promotionService = new PromotionService() ;
 
     public static void displayMainMenu() {
         do {
@@ -142,8 +143,10 @@ public class FuramaController {
                     choice = choiceException(choice);
                     switch (choice) {
                         case 1:
+                            promotionService.displayListCustomerUseService();
                             break;
                         case 2:
+                            promotionService.displayListCustomerGetVoucher();
                             break;
                         case 3:
                             break;

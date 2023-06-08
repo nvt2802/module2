@@ -10,10 +10,10 @@ import java.util.Comparator;
 
 public class ComparatorBooking implements Comparator<Booking> {
     private static DateTimeFormatter dateTimeFormatter;
-    private LocalDate rentalStartDate1 = null;
-    private LocalDate rentalStartDate2 = null;
-    private LocalDate leaseEndDate1 = null;
-    private LocalDate leaseEndDate2 = null;
+    private static LocalDate rentalStartDate1 = null;
+    private static LocalDate rentalStartDate2 = null;
+    private static LocalDate leaseEndDate1 = null;
+    private static LocalDate leaseEndDate2 = null;
 
     @Override
     public int compare(Booking o1, Booking o2) {
